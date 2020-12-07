@@ -9,6 +9,8 @@ jobs:
       matrix:
         os: [ubuntu-latest, macOS-latest]
     runs-on: ${{ matrix.os }}
+    env:
+      HOMEBREW_FORCE_VENDOR_RUBY: 1
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
