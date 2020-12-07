@@ -9,7 +9,7 @@ class Kolmafia < Formula
   livecheck do
     url :head
     strategy :page_match
-    regex(/Revision(\d+)/i)
+    regex(/Revision (\d+)/i)
   end
 
   bottle do
