@@ -1,0 +1,22 @@
+name: Bump
+
+on:
+  schedule:
+    # Every 12 hours
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Bump formulae
+        uses: dawidd6/action-homebrew-bump-formula@v3
+        continue-on-error: true
+        with:
+          token: ${{secrets.TOKEN}}
+          livecheck: true
+          tap: jonchang/tap
+          formula: kolmafia
