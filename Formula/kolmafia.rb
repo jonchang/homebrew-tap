@@ -3,12 +3,13 @@ class Kolmafia < Formula
   homepage "https://kolmafia.us"
   url "https://svn.code.sf.net/p/kolmafia/code/", revision: version
   version "20548"
+  license "BSD-3-Clause"
   head "https://svn.code.sf.net/p/kolmafia/code/"
 
   livecheck do
     url :head
     strategy :page_match
-    regex %r{Revision (\d+)}
+    regex(/Revision(\d+)/i)
   end
 
   bottle do
