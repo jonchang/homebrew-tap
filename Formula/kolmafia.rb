@@ -1,9 +1,15 @@
 class Kolmafia < Formula
   desc "Interface for online game"
   homepage "https://kolmafia.us"
-  url "https://svn.code.sf.net/p/kolmafia/code/", revision: 20548
+  url "https://svn.code.sf.net/p/kolmafia/code/", revision: version
   version "20548"
   head "https://svn.code.sf.net/p/kolmafia/code/"
+
+  livecheck do
+    url :head
+    strategy :page_match
+    regex %r{Revision (\d+)}
+  end
 
   bottle do
     root_url "https://github.com/jonchang/homebrew-tap/releases/download/kolmafia-20548"
