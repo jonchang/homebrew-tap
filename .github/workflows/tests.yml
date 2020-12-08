@@ -54,6 +54,6 @@ jobs:
           script: |
             github.issues.addLabels({
               ...context.repo,
-              issue_number: context.issue_number,
+              issue_number: context.issue.number,
               labels: ["pr-pull"]
             })
