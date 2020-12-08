@@ -1,8 +1,39 @@
+class SourceforgeTarballDownloadStrategy < AbstractFileDownloadStrategy
+  def fetch
+    # Must POST to the tarball URL in order to kick off the generation job
+    ohai "Downloading #{url}"
+    temp = Tempfile.new(Digest::SHA256.hexdigest(url))
+    begin
+      curl "-X", "POST", "--location", "--create-dirs", "--output", temp.path, url, *meta.fetch(:curl_args, [])
+    rescue ErrorDuringExecution
+      raise CurlDownloadStrategyError, url
+    end
+    new_url = File.open(temp.path).read.match(%r{"(https://sourceforge.net/code-snapshots/svn/[^"]+.zip)"})[1]
+
+    # Wait for Sourceforge to generate the tarball...
+    sleep 10
+    ohai "Downloading #{new_url}"
+    begin
+      curl "--location", "--create-dirs", "--output", temporary_path, new_url, *meta.fetch(:curl_args, [])
+    rescue ErrorDuringExecution
+      raise CurlDownloadStrategyError, new_url
+    end
+
+    ignore_interrupts do
+      cached_location.dirname.mkpath
+      temporary_path.rename(cached_location)
+      symlink_location.dirname.mkpath
+    end
+    FileUtils.ln_s cached_location.relative_path_from(symlink_location.dirname), symlink_location, force: true
+  end
+end
+
 class Kolmafia < Formula
   desc "Interface for online game"
   homepage "https://kolmafia.us"
-  url "https://svn.code.sf.net/p/kolmafia/code/", revision: "20548"
+  url "https://sourceforge.net/p/kolmafia/code/20548/tarball", using: SourceforgeTarballDownloadStrategy
   version "20548"
+  sha256 "12b963c864bae92dacb1bb1e3a983bfe7eab7b86765d6d59663d9ed9a5eb5420"
   license "BSD-3-Clause"
   head "https://svn.code.sf.net/p/kolmafia/code/"
 
