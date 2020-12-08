@@ -31,9 +31,9 @@ end
 class Kolmafia < Formula
   desc "Interface for online game"
   homepage "https://kolmafia.us"
-  url "https://sourceforge.net/p/kolmafia/code/20548/tarball", using: SourceforgeTarballDownloadStrategy
-  version "20548"
-  sha256 "12b963c864bae92dacb1bb1e3a983bfe7eab7b86765d6d59663d9ed9a5eb5420"
+  url "https://sourceforge.net/p/kolmafia/code/20552/tarball", using: SourceforgeTarballDownloadStrategy
+  version "20552"
+  sha256 "24472a12747fa814e40265cc443f29bcb6a6502ad71404cdf237243277c94b1d"
   license "BSD-3-Clause"
   head "https://svn.code.sf.net/p/kolmafia/code/"
 
@@ -44,7 +44,7 @@ class Kolmafia < Formula
   end
 
   bottle do
-    root_url "https://github.com/jonchang/homebrew-tap/releases/download/kolmafia-20548"
+    root_url "https://github.com/jonchang/homebrew-tap/releases/download/kolmafia-20552"
     cellar :any_skip_relocation
     sha256 "c6caef78ce5ee775ee6d29df3abda8ee189cdedc8958b502921a457451ec596e" => :catalina
     sha256 "4a6c64ad4f5d08def9a662a1281711da3311e3c40c9448c84221e92d592d7e02" => :x86_64_linux
