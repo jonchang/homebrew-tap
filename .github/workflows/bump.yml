@@ -21,6 +21,9 @@ jobs:
         with:
           username: jonchang
 
+      - name: Fix Homebrew version
+        run: git -C $(brew --repo) reset --hard cb72872c83686ea1450d818c8ac8902c38a05bb8
+
       - name: Bump
         id: update
         env:
