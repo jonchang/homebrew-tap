@@ -2,8 +2,8 @@ name: brew livecheck
 
 on:
   schedule:
-    # Every 12 hours
-    - cron: '0 */12 * * *'
+    # Daily, 2:15 am UTC time
+    - cron: '15 2 * * *'
   workflow_dispatch:
 
 jobs:
@@ -20,9 +20,6 @@ jobs:
         uses: Homebrew/actions/git-user-config@master
         with:
           username: jonchang
-
-      - name: Fix Homebrew version
-        run: git -C $(brew --repo) reset --hard cb72872c83686ea1450d818c8ac8902c38a05bb8
 
       - name: Bump
         id: update
