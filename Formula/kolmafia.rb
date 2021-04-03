@@ -13,9 +13,9 @@ class Kolmafia < Formula
   end
 
   bottle do
-    root_url "https://github.com/jonchang/homebrew-tap/releases/download/kolmafia-20671"
-    sha256 cellar: :any_skip_relocation, catalina:     "3c678ef145bbfcf7670b41519bed2956d42ee9955648d14a8d85d47df5ea6e2b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "75b37a2ed6c3f5b62f14ebe504f65807d0dc07a0ef560b54962323a8962701d6"
+    root_url "https://github.com/jonchang/homebrew-tap/releases/download/kolmafia-20672"
+    sha256 cellar: :any_skip_relocation, catalina:     "58831f30ee41e33820259cc7ae5218aa44395171d086b592cca7773b1057bce4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "f62a7384a09b2a2418dc9f49c844200dde0b0569ee5470f772b2bda0525fa5ba"
   end
 
   depends_on "ant" => :build
