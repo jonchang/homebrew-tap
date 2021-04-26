@@ -2,7 +2,7 @@ class Kolmafia < Formula
   desc "Interface for online game"
   homepage "https://kolmafia.us"
   url "https://svn.code.sf.net/p/kolmafia/code/", revision: version
-  version "20702"
+  version "20704"
   license "BSD-3-Clause"
   head "https://svn.code.sf.net/p/kolmafia/code/"
 
